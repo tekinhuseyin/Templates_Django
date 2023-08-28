@@ -1,13 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>templates home page</title>
-    <!-- <link rel="stylesheet" href="./style.css"> -->
-    <link rel="stylesheet" href="static/style.css">
-</head>
-<body>
+ {% extends 'templateApp/base.html' %}
+ {% block title %}
+        index sayfasındasınız
+ {% endblock title %}   
+ {% block body %}
     <h1>CLARUSWAY</h1>
     <h1>this template from APP dir </h1>
 
@@ -47,14 +42,9 @@
     
     <p>{{ desc | truncatechars:7 }}</p>
 
-    {% load static %}
+    <!-- {% load static %} -->
 
     <img src=" {% static 'butterfly.jpg' %} " alt="not found">
-
-
-
+{% endblock body %}
+        
     
-
-
-</body>
-</html>

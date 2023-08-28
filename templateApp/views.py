@@ -2,9 +2,12 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 # Create your views here.
+# def home(request):
+#     return HttpResponse('<h1>welcome to django template</h1>')
 def home(request):
-    return HttpResponse('<h1>welcome to django template</h1>')
-
+     context={         
+          }             
+     return render(request,'templateApp/home.html',context)
 
 def body(request):
      context={
@@ -22,3 +25,11 @@ def body(request):
      
      return render(request,'templateApp/index.html',context)
     # return render(request,'templateApp/index.html',{'name':'yunus'})
+from .models import Student
+
+def studentView(request):
+     students=Student.objects.all()
+     context={ 
+          'students':students,
+          }             
+     return render(request,'templateApp/student.html',context)
