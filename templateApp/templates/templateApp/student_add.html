@@ -1,0 +1,15 @@
+{% extends 'templateApp/base.html' %}
+
+{% block title %}
+    this page for STUDENT APP
+{% endblock title %}
+
+{% block body %}
+    <form action="" method="past">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+        <input type="submit" value="Add">
+
+
+{% endblock body %}
