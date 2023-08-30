@@ -34,31 +34,50 @@ def studentView(request):
           }             
      return render(request,'templateApp/student.html',context)
 
-# Forms lessons
+# Froms lessons
 from .forms import StudentForm
 from django.shortcuts import redirect
+from django.views import generic
+from django.urls import reverse_lazy
 
 def student_addView(request):
-    form=StudentForm()
-    if request.method=="POST":
-         form=StudentForm(request.POST)
-         if form.is_valid():
-              form.save()
-              return redirect ('/student')
 
-    context={
-         'form':form,
-          }
-    return render(request,'templateApp/student_add.html',context)
+     form=StudentForm()
 
-
-
+     if request.method=='POST':
+          form=StudentForm(request.POST)
+          if form.is_valid():
+               form.save()
+               return redirect ('/student')
+     context={ 
+          'form':form
+          }  
+     return render(request,'templateApp/student_add.html',context)
 
 
+class StudentAddView(generic.CreateView):
+     model=Student
+     form_class=StudentForm
+     success_url=reverse_lazy('list')
+     # default olarak modelname_form.html değiştirecekseniz templatename e  ata
+     template_name='templateApp/student_add.html'
 
 
+class StudentListView(generic.ListView):
+     model=Student
+     # form_class=StudentForm
+     # success_url=reverse_lazy('list')
+     # default olarak student_list.html değiştirecekseniz templatename e  ata
+     # template_name='templateApp/student.html'
 
+class StudentDetailView(generic.DetailView):
+     model=Student
+     # pk_url_kwarg='id' # pk yerine farklı kullanmak isteseniz
+     # default olarak student_detail.html değiştirecekseniz templatename e  ata
 
-
-
-
+class StudentUpdateView(generic.UpdateView):
+     model=Student
+     form_class=StudentForm        
+     success_url=reverse_lazy('list')
+     # default olarak modelname_form.html değiştirecekseniz templatename e  ata
+     template_name='templateApp/student_add.html'

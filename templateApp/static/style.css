@@ -1,3 +1,7 @@
 body{
     background-color: rgb(255, 241, 117);
 }
+
+li {
+    font-size: 30px;
+}

@@ -1,7 +1,9 @@
  {% extends 'templateApp/base.html' %}
+ 
  {% block title %}
         index sayfasındasınız
  {% endblock title %}   
+ 
  {% block body %}
     <h1>CLARUSWAY</h1>
     <h1>this template from APP dir </h1>
@@ -33,7 +35,7 @@
     {# single line DTL comment #}
 
     {% comment %} 
-    this line DTL comment 
+        this line DTL comment 
     {% endcomment %}
 
     <p>{{ desc | title}}</p>
@@ -44,7 +46,7 @@
 
     <!-- {% load static %} -->
 
-    <img src=" {% static 'butterfly.jpg' %} " alt="not found">
+    <img src=" {% static 'dogs.jpg' %} " alt="not found">
 {% endblock body %}
         
     
